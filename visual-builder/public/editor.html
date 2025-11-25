@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visual Builder</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #333; display: flex; }
+        #sidebar { width: 250px; background: #222; color: white; padding: 20px; font-family: sans-serif; display: flex; flex-direction: column; }
+        #canvas { position: relative; flex-grow: 1; height: 100vh; background: white; }
+        iframe { width: 100%; height: 100%; border: none; }
+        #overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .ghost { position: absolute; border: 2px dashed #007bff; background: rgba(0,123,255,0.1); pointer-events: none; z-index: 10; }
+        .indicator { position: absolute; background: #007bff; pointer-events: none; z-index: 20; }
+        
+        /* Toast Animation Class */
+        .toast-visible { opacity: 1 !important; }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+    <h3>Design</h3>
+    
+    <div class="control-group">
+        <label>Dimensions</label>
+        <div class="row">
+            <input type="text" id="widthInput" placeholder="Width (e.g. 100%)">
+            <input type="text" id="heightInput" placeholder="Height">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label>Spacing</label>
+        <div class="row">
+            <input type="text" id="paddingInput" placeholder="Padding">
+            <input type="text" id="marginInput" placeholder="Margin">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label>Typography</label>
+        <select id="alignInput" style="width: 100%; padding: 5px; margin-bottom: 10px;">
+            <option value="left">Align Left</option>
+            <option value="center">Align Center</option>
+            <option value="right">Align Right</option>
+        </select>
+        <div class="row">
+            <label>Color:</label>
+            <input type="color" id="colorInput">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label>Background</label>
+        <div class="row">
+            <label>Bg Color:</label>
+            <input type="color" id="bgInput">
+        </div>
+    </div>
+
+    <p style="margin-top: 20px; color: #888; font-size: 12px;">
+        Select an element to edit properties.
+    </p>
+
+    <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid #444;">
+        <button id="saveBtn" style="width: 100%; padding: 10px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 4px;">
+            Save & Preview
+        </button>
+    </div>
+</div>
+
+<style>
+    /* ... existing styles ... */
+    .control-group { margin-bottom: 15px; border-bottom: 1px solid #444; padding-bottom: 10px; }
+    .control-group label { display: block; margin-bottom: 5px; font-size: 12px; color: #aaa; }
+    .control-group input[type="text"] { width: 100%; background: #333; border: 1px solid #555; color: white; padding: 5px; margin-bottom: 5px; }
+    .row { display: flex; gap: 5px; align-items: center; }
+</style>
+
+    <div id="canvas">
+        <iframe src="/content" id="site-frame"></iframe>
+        <div id="overlay"></div>
+    </div>
+
+    <div id="toast" style="
+        position: fixed; 
+        bottom: 20px; 
+        right: 20px; 
+        background: #222; 
+        color: white; 
+        padding: 12px 24px; 
+        border-radius: 4px; 
+        opacity: 0; 
+        transition: opacity 0.5s;
+        pointer-events: none;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        font-family: sans-serif;
+    ">
+        ✅ Changes Saved!
+    </div>
+
+    <script src="editor.js"></script>
+</body>
+</html>

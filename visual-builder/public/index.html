@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="card" data-editor-id="el-8fwr8ui6i">
+        <h1 data-editor-id="el-x1itg66u8">Second Card</h1>
+        <p data-editor-id="el-rw0dlqdcd">Or change my width in the sidebar.</p>
+    </div>
+    <button class="btn" data-editor-id="el-tl2vgfl9d">Click Me<h1 data-editor-id="el-l7p2j6zkp">Welcome</h1><div class="card" data-editor-id="el-m2o6l0ykg">
+        
+        <p data-editor-id="el-nauhwjebg">Drag this card around!</p>
+    </div></button>
+
+<a id="edit-mode-btn" href="/editor.html" style="
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    background: #007bff; 
+    color: white; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    border-radius: 50px; 
+    font-family: sans-serif; 
+    font-weight: bold; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 9999;
+" data-editor-id="el-tvg4lndnn">
+    ✏️ Edit Page
+</a>
+
+<script data-editor-id="el-rjfj04g9t">
+    // Logic: If I am inside an iframe (the editor), hide this button.
+    if (window.self !== window.top) {
+        document.getElementById('edit-mode-btn').style.display = 'none';
+    }
+</script>
+
+</body></html>
